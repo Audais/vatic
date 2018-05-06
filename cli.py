@@ -680,7 +680,9 @@ class dump(DumpCommand):
                 boxdata['ybr'] = box.ybr
                 boxdata['outside'] = box.lost
                 boxdata['occluded'] = box.occluded
-                boxdata['attributes'] = box.attributes
+                boxdata['attributes'] = []
+                for attr in box.attributes:
+                    boxdata['attributes'].append(attr.text)
                 boxes[int(box.frame)] = boxdata
             result['boxes'] = boxes
             annotations[int(id)] = result
